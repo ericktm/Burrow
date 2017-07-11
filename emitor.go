@@ -166,7 +166,7 @@ func (e *Emiter) emit() {
 			for _, stats := range metric.Status.Partitions {
 				if m, ok := mp[stats.Topic]; ok {
 					m["logsize"] = m["logsize"].(int) + stats.End.Offset
-					m["lag"] = m["lag"].(int) + stats.End.Offset
+					m["lag"] = m["lag"].(int) + stats.End.Lag
 				} else {
 					mp[stats.Topic] = map[string]interface{}{
 						"logsize": stats.End.Offset,
